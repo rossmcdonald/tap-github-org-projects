@@ -1,4 +1,8 @@
-# tap-github
+# tap-github-org-projects
+
+> This is a forked and modified version of
+[tap-github](https://github.com/singer-io/tap-github), but adapted for projects
+at the Github organization scope.
 
 This is a [Singer](https://singer.io) tap that produces JSON-formatted
 data from the GitHub API following the [Singer
@@ -7,15 +11,7 @@ spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).
 This tap:
 - Pulls raw data from the [GitHub REST API](https://developer.github.com/v3/)
 - Extracts the following resources from GitHub for a single repository:
-  - [Assignees](https://developer.github.com/v3/issues/assignees/#list-assignees)
-  - [Collaborators](https://developer.github.com/v3/repos/collaborators/#list-collaborators)
-  - [Commits](https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository)
-  - [Issues](https://developer.github.com/v3/issues/#list-issues-for-a-repository)
-  - [Pull Requests](https://developer.github.com/v3/pulls/#list-pull-requests)
-  - [Comments](https://developer.github.com/v3/issues/comments/#list-comments-in-a-repository)
-  - [Reviews](https://developer.github.com/v3/pulls/reviews/#list-reviews-on-a-pull-request)
-  - [Review Comments](https://developer.github.com/v3/pulls/comments/)
-  - [Stargazers](https://developer.github.com/v3/activity/starring/#list-stargazers)
+  - [Projects](https://docs.github.com/en/rest/reference/projects)
 - Outputs the schema for each resource
 - Incrementally pulls data based on the input state
 
@@ -28,7 +24,7 @@ This tap:
     ```bash
     > virtualenv -p python3 venv
     > source venv/bin/activate
-    > pip install tap-github
+    > pip install < requirements.txt
     ```
 
 2. Create a GitHub access token
@@ -41,18 +37,17 @@ This tap:
 3. Create the config file
 
     Create a JSON file containing the access token you just created
-    and the path to one or multiple repositories that you want to extract data from. Each repo path should be space delimited. The repo path is relative to
-    `https://github.com/`. For example the path for this repository is
-    `singer-io/tap-github`. 
+    and the path to one or multiple organizations that you want to extract data from. Each org path should be space delimited. The org path is relative to
+    `https://github.com/`.
 
     ```json
     {"access_token": "your-access-token",
-     "repository": "singer-io/tap-github singer-io/getting-started"}
+     "organizations": "someorg another-org"}
     ```
 4. Run the tap in discovery mode to get properties.json file
 
     ```bash
-    tap-github --config config.json --discover > properties.json
+    python3 tap_github/__init__.py --config config.json --discover > properties.json
     ```
 5. In the properties.json file, select the streams to sync
 
@@ -78,9 +73,11 @@ This tap:
     `tap-github` can be run with:
 
     ```bash
-    tap-github --config config.json --properties properties.json
+    python3 tap_github/__init__.py --config config.json --properties properties.json
+
+    python3 tap_github/__init__.py -c config.json -p properties.json | target-stitch --config stitch.json
     ```
 
 ---
 
-Copyright &copy; 2018 Stitch
+Copyright &copy; 2018 Stitch, 2020 Ross McDonald

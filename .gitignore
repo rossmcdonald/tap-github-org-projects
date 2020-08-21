@@ -97,3 +97,5 @@ properties.json
 
 # Jetbrains IDE
 .idea
+
+stitch.json

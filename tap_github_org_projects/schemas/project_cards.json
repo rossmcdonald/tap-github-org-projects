@@ -4,7 +4,25 @@
     "object"
   ],
   "properties": {
-    "_sdc_repository": {
+    "_sdc_organization": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "cards_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "url": {
       "type": [
         "null",
         "string"
@@ -22,61 +40,65 @@
         "string"
       ]
     },
-    "url": {
+    "note": {
       "type": [
         "null",
         "string"
       ]
     },
-    "html_url": {
+    "creator": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "login": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "id": {
+          "type": [
+            "null",
+            "number"
+          ]
+        }
+      }
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "archived": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "column_url": {
       "type": [
         "null",
         "string"
       ]
     },
-    "name": {
+    "content_url": {
       "type": [
         "null",
         "string"
       ]
     },
-    "slug": {
-      "type": [
-        "null",
-        "string"
-      ]
-    },
-    "description": {
-      "type": [
-        "null",
-        "string"
-      ]
-    },
-    "privacy": {
-      "type": [
-        "null",
-        "string"
-      ]
-    },
-    "permission": {
-      "type": [
-        "null",
-        "string"
-      ]
-    },
-    "members_url": {
-      "type": [
-        "null",
-        "string"
-      ]
-    },
-    "repositories_url": {
-      "type": [
-        "null",
-        "string"
-      ]
-    },
-    "parent": {
+    "project_url": {
       "type": [
         "null",
         "string"
